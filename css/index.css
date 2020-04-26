@@ -3,6 +3,25 @@ body {
   background-color: #fff;
   color: #111;
 }
+.navbar{
+  background-color: aqua;
+  width: 100%;
+  position: sticky;
+  top:0em;
+  display: flex;
+  
+}ul{
+  display: flex;
+}
+
+li{
+padding: 0.5em;
+color:red;
+}
 .story {
   padding: 0 1em;
+  margin-top: 8em;
+}
+.marked-link{
+  color: yellow;
 }

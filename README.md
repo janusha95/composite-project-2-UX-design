@@ -97,3 +97,7 @@ Also be sure to include:
 
 ## The sites which i have used for reference for 4th problem. :
 https://www.w3schools.com/js/js_htmldom_nodes.asp
+
+
+## For scroll spy mainly used :
+https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API
