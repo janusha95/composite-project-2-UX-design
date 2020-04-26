@@ -25,3 +25,11 @@ color:red;
 .marked-link{
   color: yellow;
 }
+/* The sticky class is added to the header with JS when it reaches its specific section */
+.sticky {
+  position: fixed;
+  top: 1em;
+  width: auto;
+  background: #555;
+  color: #f1f1f1;
+}
