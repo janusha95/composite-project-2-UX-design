@@ -105,3 +105,66 @@ let options = {
   sectionObserver.observe(section2Target);
   sectionObserver.observe(section3Target);
   
+  // To make fixed sub-heading when the scroll position meets its specific section
+  let numb = {
+    threshold: 0
+  }
+  // Function reads through every section
+  let navCallback = (navigations, navigationObserver) => {
+    navigations.forEach(navigation => {
+      var sectionId = navigation.target.id;
+      var previouSection
+      var currentSection
+      
+      var navId 
+        switch (sectionId) {
+          case 'javascript':
+            navId = '#navjavascript';
+            previouSection = ['#navwindow' , '#navdocument' , '#navelement']
+            console.log("here");
+            break;
+          case 'window':
+            navId = '#navwindow'; 
+            previouSection = ['#navdocument' , '#navjavascript' , '#navelement']
+           break;
+          case 'document':
+            navId = '#navdocument'
+            previouSection = ['#navelement' , '#navwindow' ,'#navjavascript' ]
+          break; 
+          case 'element':
+            navId = '#navelement'
+            previouSection = ['#navdocument','#navwindow' , '#navjavascript']  
+           break;
+          default:
+            break;
+        }
+       
+      // Checks if the position is meeting its specific section
+      if (navigation.isIntersecting) {
+        for(currentSection of previouSection){
+          var sec = document.querySelector(currentSection);
+          // Remove fixed header from other sections that has not met the position
+          sec.classList.remove("sticky");
+          console.log("Removed sticky sub-heading");
+        }
+        var sec = document.querySelector(navId);
+        // Add fixed header to the specific section that met through 'sticky'
+        sec.classList.add('sticky');
+        console.log("Added sticky sub-heading");
+        
+      }
+      
+    })
+  }
+  let numb1 = {
+    threshold: 0
+  }
+  let navigationObserver = new IntersectionObserver(navCallback, numb);
+  let navigateSection1 = document.querySelector('#javascript');
+  let navigateSection2 = document.querySelector('#window');
+  let navigateSection3 = document.querySelector('#document');
+  let navigateSection4 = document.querySelector('#element');
+  navigationObserver.observe(navigateSection1);
+  navigationObserver.observe(navigateSection2);
+  navigationObserver.observe(navigateSection3);
+  navigationObserver.observe(navigateSection4);  
