@@ -10,8 +10,8 @@ When the user scrolls down the header of a specific section is fixed to top.
 ## - Heading Landmarks :
 As you will move from one section to another , you can notice the change in navigation bar. Whichever section is selected that link is marked with different color.
 
-## - Controllled Content Reveal:
-
+## - Controlled Content Reveal (Image Slide) :
+The image changes automatically occurs for every 'x' time interval.
 
 ## - Simulate infinite content:
 As you will reach the bottom of the page you will observe that it loads the content.
