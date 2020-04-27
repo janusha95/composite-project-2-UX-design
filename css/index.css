@@ -38,6 +38,7 @@ color:red;
   padding: 0 1em;
   margin-top: 4em;
 }
+/* Class is added to the link whenever each section strikes. */
 .marked-link{
   color:brown;
 }

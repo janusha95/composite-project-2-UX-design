@@ -1,5 +1,12 @@
+//Loading infintie contents when we reach the end.
+
+// Used counter so that it loads certain number of times instead of inifinte.
+var counter = 0;
 window.addEventListener("scroll", function (e) {
-  if ((document.body.scrollHeight - window.scrollY) < 1000) {
+  
+  if ((document.body.scrollHeight - window.scrollY) < 1000  && counter < 15) {
+    
+    // Creating a elements which are to be added.
     var sec = document.createElement("section");
     var tit = document.createElement("h3");
     var para = document.createElement("p");
@@ -7,6 +14,7 @@ window.addEventListener("scroll", function (e) {
     sec.appendChild(tit);
     sec.appendChild(para);
 
+    // Adding the content to the elements
     var heading = document.createTextNode("This is a title");
 
     tit.appendChild(heading);
@@ -15,21 +23,36 @@ window.addEventListener("scroll", function (e) {
 
     var a = document.getElementsByTagName('main');
     a[0].appendChild(sec);
-
+    counter++;
+  
   }
 })
 
+
+
+// Scrollspy and fixed header. 
+
 let value = {
+  // threhold zero indicates the visiblity of particular section.
   threshold: 0
 }
 let sectionCallback = (observations, sectionObserver) => {
   observations.forEach(observation => {
     var targetId = observation.target.id
+    // getting the current header.
     var fixHeader = observation.target.getElementsByTagName('h2')[0];
+    
+    //Selecting the navgiation bar and storing in list.
     var list = document.querySelector('.list1');
+
+    //Selcting the anchor tags from list . 
     var previousTarget = list.getElementsByTagName('a');
+
+    //Collecting all the  headings with class sticky so that we can replace with current in future.
     var Headers = document.getElementsByClassName('sticky');
     var linkId
+
+
     switch (targetId) {
       case 'javascript':
         linkId = '#browserjavascript';
@@ -47,31 +70,39 @@ let sectionCallback = (observations, sectionObserver) => {
         break;
     }
     if (observation.isIntersecting) {
+
+      // removing the fixed as well marked property from all.
       for (currentHeader of Headers) {
         currentHeader.classList.remove('sticky');
       }
       for (currentTarget of previousTarget){
         currentTarget.classList.remove('marked-link');
       }
+
+      //Now adding new properties to the current selected area.
       var link = document.querySelector(linkId);
-      console.log("Here you go..");
       link.classList.add('marked-link');
       fixHeader.classList.add('sticky');
     }
   })
 }
-let value1 = {
-  threshold: 0
-}
+
 let sectionObserver = new IntersectionObserver(sectionCallback, value);
+// Selecting all the sections.
 let sectionTarget = document.querySelector('#javascript');
 let section1Target = document.querySelector('#window');
 let section2Target = document.querySelector('#document');
 let section3Target = document.querySelector('#element');
+//Observing each section.
 sectionObserver.observe(sectionTarget);
 sectionObserver.observe(section1Target);
 sectionObserver.observe(section2Target);
 sectionObserver.observe(section3Target);
+
+
+
+
+
 
 // Slide image in time interval of 3000
 var i = 0; 			
@@ -99,69 +130,3 @@ function SlideImg(){
 // Run function when page loads
 window.onload=SlideImg;  
 
-
-
-
-  // // To make fixed sub-heading when the scroll position meets its specific section
-  // let numb = {
-  //   threshold: 0
-  // }
-  // // Function reads through every section
-  // let navCallback = (navigations, navigationObserver) => {
-  //   navigations.forEach(navigation => {
-  //     var sectionId = navigation.target.id;
-  //     var previouSection
-  //     var currentSection
-
-  //     var navId 
-  //       switch (sectionId) {
-  //         case 'javascript':
-  //           navId = '#navjavascript';
-  //           previouSection = ['#navwindow' , '#navdocument' , '#navelement']
-  //           console.log("here");
-  //           break;
-  //         case 'window':
-  //           navId = '#navwindow'; 
-  //           previouSection = ['#navdocument' , '#navjavascript' , '#navelement']
-  //          break;
-  //         case 'document':
-  //           navId = '#navdocument'
-  //           previouSection = ['#navelement' , '#navwindow' ,'#navjavascript' ]
-  //         break; 
-  //         case 'element':
-  //           navId = '#navelement'
-  //           previouSection = ['#navdocument','#navwindow' , '#navjavascript']  
-  //          break;
-  //         default:
-  //           break;
-  //       }
-
-  //     // Checks if the position is meeting its specific section
-  //     if (navigation.isIntersecting) {
-  //       for(currentSection of previouSection){
-  //         var sec = document.querySelector(currentSection);
-  //         // Remove fixed header from other sections that has not met the position
-  //         sec.classList.remove("sticky");
-  //         console.log("Removed sticky sub-heading");
-  //       }
-  //       var sec = document.querySelector(navId);
-  //       // Add fixed header to the specific section that met through 'sticky'
-  //       sec.classList.add('sticky');
-  //       console.log("Added sticky sub-heading");
-
-  //     }
-
-  //   })
-  // }
-  // let numb1 = {
-  //   threshold: 0
-  // }
-  // let navigationObserver = new IntersectionObserver(navCallback, numb);
-  // let navigateSection1 = document.querySelector('#javascript');
-  // let navigateSection2 = document.querySelector('#window');
-  // let navigateSection3 = document.querySelector('#document');
-  // let navigateSection4 = document.querySelector('#element');
-  // navigationObserver.observe(navigateSection1);
-  // navigationObserver.observe(navigateSection2);
-  // navigationObserver.observe(navigateSection3);
-  // navigationObserver.observe(navigateSection4);  

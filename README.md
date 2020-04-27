@@ -5,7 +5,7 @@
 We have tried to implemented all the four criteria which were assigned by Rocco. So the following UI components placed are:
 
 ## - Fixed Header : 
-When the user scrolls down the header of a specific section is fixed to top.
+When the user scrolls down the header of a specific section is fixed to top.Also the content which are added afterwards doesnt have any specific link in the navigation bar.
 
 ## - Heading Landmarks :
 As you will move from one section to another , you can notice the change in navigation bar. Whichever section is selected that link is marked with different color.
@@ -14,7 +14,7 @@ As you will move from one section to another , you can notice the change in navi
 The image changes automatically occurs for every 'x' time interval.
 
 ## - Simulate infinite content:
-As you will reach the bottom of the page you will observe that it loads the content.
+As you will reach the bottom of the page you will observe that it loads the  new content certain number of times.
 
 
 The main websites which we have used are:
