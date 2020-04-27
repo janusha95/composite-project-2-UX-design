@@ -73,7 +73,31 @@ sectionObserver.observe(section1Target);
 sectionObserver.observe(section2Target);
 sectionObserver.observe(section3Target);
 
+// Slide image in time interval of 3000
+var i = 0; 			
+var images = [];	
+// Time Between Switch
+var time = 3000;	
+// Image List
+images[0] = "image/cookies-1.jpg";
+images[1] = "image/cookies-2.jpeg";
+images[2] = "image/cookies-3.jpg";
+images[3] = "image/cookies-4.jpeg";
+// Change Image
+function SlideImg(){
+  document.getElementById('slide').src = images[i];
+  if(i < images.length - 1){
+    i++; 
+  } else { 
+    // Reset Back To O
+    i = 0;
+  }
 
+  setTimeout("SlideImg()", time);
+}
+
+// Run function when page loads
+window.onload=SlideImg;  
 
 
 
